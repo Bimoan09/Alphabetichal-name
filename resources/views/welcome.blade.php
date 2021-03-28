@@ -41,6 +41,11 @@
                     <tr>
                         <th>Nama</th>
                     </tr>
+                    <tr>
+                        <th rowspan="1" colspan="1">
+                            <input type="text" size="12" id="search_name" placeholder="Search Nama">
+                        </th> 
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $datas)
@@ -91,6 +96,20 @@
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
+});
+
+$("#search_name").keyup(function () {
+    var value = this.value.toLowerCase().trim();
+
+    $("table tr").each(function (index) {
+        if (!index) return;
+        $(this).find("td").each(function () {
+            var id = $(this).text().toLowerCase().trim();
+            var not_found = (id.indexOf(value) == -1);
+            $(this).closest('tr').toggle(!not_found);
+            return not_found;
+        });
+    });
 });
 </script>
 
