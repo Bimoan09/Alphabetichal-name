@@ -18,6 +18,7 @@
         <!-- Styles -->
         <style>
           .btn-success.active{
+              background-color : #87B87F! important;
               border-radius: 1px;
           }
           .container-header{
